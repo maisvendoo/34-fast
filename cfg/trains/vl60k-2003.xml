@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Config>
+	<Common>
+		<!-- Зарядное давление, МПа -->
+		<ChargingPressure>0.52</ChargingPressure>
+		<!-- Начальное давление в ГР, МПа -->
+		<InitMainResPressure>0.9</InitMainResPressure>
+		<!-- Поезд без воздуха (1 - без воздуха, 0 - полностью заряженный) -->
+		<NoAir>0</NoAir>
+
+		<Title>ВЛ60к-1737 с цистернами</Title>
+		<Description>Тестовый поезд с вагонами-цистернами</Description>
+	</Common>
+
+	<Vehicle>
+		<ModuleDir>vl60</ModuleDir>
+		<Module>vl60k</Module>
+		<ModuleConfigDir>vl60k</ModuleConfigDir>
+		<ModuleConfig>vl60k-1737</ModuleConfig>
+		<IsOrientationForward>1</IsOrientationForward>
+		<Count>1</Count>
+		<PayloadCoeff>1</PayloadCoeff>		
+	</Vehicle>	
+
+	<Vehicle>
+		<ModuleDir>cistern</ModuleDir>
+		<Module>cistern</Module>
+		<ModuleConfigDir>cisterns</ModuleConfigDir>
+		<ModuleConfig>cistern_15-150_1</ModuleConfig>
+		<IsOrientationForward>1</IsOrientationForward>
+		<Count>3</Count>
+		<PayloadCoeff>0.5</PayloadCoeff>
+		<IsBrakeShoes>0</IsBrakeShoes>
+	</Vehicle>
+
+	<Vehicle>
+		<ModuleDir>cistern</ModuleDir>
+		<Module>cistern</Module>
+		<ModuleConfigDir>cisterns</ModuleConfigDir>
+		<ModuleConfig>cistern_15-150_2</ModuleConfig>
+		<IsOrientationForward>1</IsOrientationForward>
+		<Count>3</Count>
+		<PayloadCoeff>0.5</PayloadCoeff>
+		<IsBrakeShoes>0</IsBrakeShoes>
+	</Vehicle>
+
+	<Vehicle>
+		<ModuleDir>cistern</ModuleDir>
+		<Module>cistern</Module>
+		<ModuleConfigDir>cisterns</ModuleConfigDir>
+		<ModuleConfig>cistern_15-871</ModuleConfig>
+		<IsOrientationForward>1</IsOrientationForward>
+		<Count>3</Count>
+		<PayloadCoeff>0.5</PayloadCoeff>
+		<IsBrakeShoes>0</IsBrakeShoes>
+	</Vehicle>
+
+	<Vehicle>
+		<ModuleDir>cistern</ModuleDir>
+		<Module>cistern</Module>
+		<ModuleConfigDir>cisterns</ModuleConfigDir>
+		<ModuleConfig>cistern_15-897</ModuleConfig>
+		<IsOrientationForward>1</IsOrientationForward>
+		<Count>3</Count>
+		<PayloadCoeff>0.5</PayloadCoeff>
+		<IsBrakeShoes>0</IsBrakeShoes>
+	</Vehicle>
+
+	<Vehicle>
+		<ModuleDir>cistern</ModuleDir>
+		<Module>cistern</Module>
+		<ModuleConfigDir>cisterns</ModuleConfigDir>
+		<ModuleConfig>cistern_15-1443_1</ModuleConfig>
+		<IsOrientationForward>1</IsOrientationForward>
+		<Count>3</Count>
+		<PayloadCoeff>0.5</PayloadCoeff>
+		<IsBrakeShoes>0</IsBrakeShoes>
+	</Vehicle>
+
+	<Vehicle>
+		<ModuleDir>cistern</ModuleDir>
+		<Module>cistern</Module>
+		<ModuleConfigDir>cisterns</ModuleConfigDir>
+		<ModuleConfig>cistern_15-1443_2</ModuleConfig>
+		<IsOrientationForward>1</IsOrientationForward>
+		<Count>3</Count>
+		<PayloadCoeff>0.5</PayloadCoeff>
+		<IsBrakeShoes>0</IsBrakeShoes>
+	</Vehicle>
+
+	<Vehicle>
+		<ModuleDir>cistern</ModuleDir>
+		<Module>cistern</Module>
+		<ModuleConfigDir>cisterns</ModuleConfigDir>
+		<ModuleConfig>cistern_15-1500_1</ModuleConfig>
+		<IsOrientationForward>1</IsOrientationForward>
+		<Count>3</Count>
+		<PayloadCoeff>0.5</PayloadCoeff>
+		<IsBrakeShoes>0</IsBrakeShoes>
+	</Vehicle>
+
+	<Vehicle>
+		<ModuleDir>cistern</ModuleDir>
+		<Module>cistern</Module>
+		<ModuleConfigDir>cisterns</ModuleConfigDir>
+		<ModuleConfig>cistern_15-1500_2</ModuleConfig>
+		<IsOrientationForward>1</IsOrientationForward>
+		<Count>3</Count>
+		<PayloadCoeff>0.5</PayloadCoeff>
+		<IsBrakeShoes>0</IsBrakeShoes>
+	</Vehicle>
+
+	<Vehicle>
+		<ModuleDir>cistern</ModuleDir>
+		<Module>cistern</Module>
+		<ModuleConfigDir>cisterns</ModuleConfigDir>
+		<ModuleConfig>cistern_15-1547_1</ModuleConfig>
+		<IsOrientationForward>1</IsOrientationForward>
+		<Count>3</Count>
+		<PayloadCoeff>0.5</PayloadCoeff>
+		<IsBrakeShoes>0</IsBrakeShoes>
+	</Vehicle>
+
+	<Vehicle>
+		<ModuleDir>cistern</ModuleDir>
+		<Module>cistern</Module>
+		<ModuleConfigDir>cisterns</ModuleConfigDir>
+		<ModuleConfig>cistern_15-1547_2</ModuleConfig>
+		<IsOrientationForward>1</IsOrientationForward>
+		<Count>3</Count>
+		<PayloadCoeff>0.5</PayloadCoeff>
+		<IsBrakeShoes>0</IsBrakeShoes>
+	</Vehicle>
+
+	<Vehicle>
+		<ModuleDir>cistern</ModuleDir>
+		<Module>cistern</Module>
+		<ModuleConfigDir>cisterns</ModuleConfigDir>
+		<ModuleConfig>cistern_15-1547_3</ModuleConfig>
+		<IsOrientationForward>1</IsOrientationForward>
+		<Count>3</Count>
+		<PayloadCoeff>0.5</PayloadCoeff>
+		<IsBrakeShoes>0</IsBrakeShoes>
+	</Vehicle>
+
+	<Vehicle>
+		<ModuleDir>cistern</ModuleDir>
+		<Module>cistern</Module>
+		<ModuleConfigDir>cisterns</ModuleConfigDir>
+		<ModuleConfig>cistern_15-1547_4</ModuleConfig>
+		<IsOrientationForward>1</IsOrientationForward>
+		<Count>3</Count>
+		<PayloadCoeff>0.5</PayloadCoeff>
+		<IsBrakeShoes>0</IsBrakeShoes>
+	</Vehicle>
+
+	<Vehicle>
+		<ModuleDir>cistern</ModuleDir>
+		<Module>cistern</Module>
+		<ModuleConfigDir>cisterns</ModuleConfigDir>
+		<ModuleConfig>cistern_15-c863_1</ModuleConfig>
+		<IsOrientationForward>1</IsOrientationForward>
+		<Count>3</Count>
+		<PayloadCoeff>0.5</PayloadCoeff>
+		<IsBrakeShoes>0</IsBrakeShoes>
+	</Vehicle>
+
+	<Vehicle>
+		<ModuleDir>cistern</ModuleDir>
+		<Module>cistern</Module>
+		<ModuleConfigDir>cisterns</ModuleConfigDir>
+		<ModuleConfig>cistern_15-c863_2</ModuleConfig>
+		<IsOrientationForward>1</IsOrientationForward>
+		<Count>3</Count>
+		<PayloadCoeff>0.5</PayloadCoeff>
+		<IsBrakeShoes>0</IsBrakeShoes>
+	</Vehicle>
+
+</Config>
