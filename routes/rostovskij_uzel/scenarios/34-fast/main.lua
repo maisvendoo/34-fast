@@ -12,8 +12,10 @@ setTime("12:00")
 
 -- Электровоз ЭП1м-735 на 9 пути станции Ростов Берег
 train1 = TrainData.new()
-train1.name = "EP1m-735"
-train1.config = "ep1m-735"
+--train1.name = "EP1m-735"
+--train1.config = "ep1m-735"
+train1.name = "ВЛ60пк-1543"
+train1.config = "vl60pk-1543"
 train1.traj = "track_rg_p9e"
 train1.coord = 30.0
 train1.dir = -1
@@ -291,7 +293,7 @@ setTimeTrigger("12:01", actionBuildRoute(train574.traj, Rg_Zar_Dep_POINT, train5
 function train574_arr(train_name, traj_name, is_busy)
 
 	-- Если поезд 574 на приближении к Батайску
-	if is_busy and train_name == "574" and traj_name == "track_bat_606-chrm" then
+	if is_busy and train_name == "574" and traj_name == "track_bat_52-chpm" then
 		-- Строим маршрут 574-му на прием
 		buildRoute("track_bat_52-сhpm", "track_bat_p1", train574.dir)
 		-- Просим удалить этот триггер
