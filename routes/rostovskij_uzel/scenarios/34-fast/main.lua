@@ -242,15 +242,32 @@ setTrigger(autoApproach(BRH_NP2, BRH_NU1, -1))
 local TIM_BRH_DEP_POINT = "track_brh-tim_16-nd"
 local TIM_NU2 = "track_brh-tim_14-16"
 
--- Поезд 2005 отправляем в 12:05 в сторону Брюховецкой
-setTimeTrigger("+00:05", actionBuildRoute(train2005.traj, TIM_BRH_DEP_POINT, train2005.dir))
+-- Поезд 2001 отправляем в 12:05 в сторону Брюховецкой
+setTimeTrigger("+00:05", actionBuildRoute(train2001.traj, TIM_BRH_DEP_POINT, train2001.dir))
+
+-- Маршрут отправления грузового поезда 2005
+function train2005_dep(train_name, traj_name, is_busy)
+
+	-- Если поезд 2001 освободил 2-й участок удаления
+	if not is_busy and train_name == "2001" and traj_name == TIM_NU2 then
+		-- Строим маршрут 2003-му
+		buildRoute(train2005.traj, TIM_BRH_DEP_POINT, train2005.dir)
+		-- Просим удалить этот триггер
+		return TRIG_DELETE
+	end
+	
+	-- Сохраняем тригер, пока он не отработал
+	return TRIG_SAFE
+end
+
+setTrigger(train2005_dep)
 
 -- Маршрут отправления грузового поезда 2003
 function train2003_dep(train_name, traj_name, is_busy)
 
-	-- Если поезд 2005 освободил 2-й участок удаления
-	if not is_busy and train_name == "2005" and traj_name == TIM_NU2 then
-		-- Строим маршрут 2003-му
+	-- Если поезд 2005 освободил 2-й участок удаления + 1 блок-участок
+	if not is_busy and train_name == "2005" and traj_name == "track_brh-tim_12-14" then
+		-- Строим маршрут 2001-му
 		buildRoute(train2003.traj, TIM_BRH_DEP_POINT, train2003.dir)
 		-- Просим удалить этот триггер
 		return TRIG_DELETE
@@ -262,23 +279,6 @@ end
 
 setTrigger(train2003_dep)
 
--- Маршрут отправления грузового поезда 2001
-function train2001_dep(train_name, traj_name, is_busy)
-
-	-- Если поезд 2003 освободил 2-й участок удаления + 1 блок-участок
-	if not is_busy and train_name == "2003" and traj_name == "track_brh-tim_12-14" then
-		-- Строим маршрут 2001-му
-		buildRoute(train2001.traj, TIM_BRH_DEP_POINT, train2001.dir)
-		-- Просим удалить этот триггер
-		return TRIG_DELETE
-	end
-	
-	-- Сохраняем тригер, пока он не отработал
-	return TRIG_SAFE
-end
-
-setTrigger(train2001_dep)
-
 --------------------------------------------------------------------------------
 -- Отправление пассажирского поезда 574
 --------------------------------------------------------------------------------
@@ -289,13 +289,13 @@ local Rg_Zar_Dep_POINT = "track_rg_7-ch_zar"
 -- Отправление поезда 574 в 12:13
 setTimeTrigger("+00:01", actionBuildRoute(train574.traj, Rg_Zar_Dep_POINT, train574.dir))
 
--- Строим маршрут приема в Батайске
-function train574_arr(train_name, traj_name, is_busy)
+-- Строим маршрут пропуска в Батайске
+function train574_apr(train_name, traj_name, is_busy)
 
 	-- Если поезд 574 на приближении к Батайску
 	if is_busy and train_name == "574" and traj_name == BP2_CHU1 then
-		-- Строим маршрут 574-му на прием
-		buildRoute(BP2_CHU1, "track_bat_p1", train574.dir)
+		-- Строим маршрут 574-му на пропуск
+		buildRoute(BP2_CHU1, "track_bat-7km_nb-2", train574.dir)
 		-- Просим удалить этот триггер
 		return TRIG_DELETE
 	end
@@ -304,7 +304,24 @@ function train574_arr(train_name, traj_name, is_busy)
 	return TRIG_SAFE
 end
 
-setTrigger(train574_arr)
+setTrigger(train574_apr)
+
+-- Стром маршрут приема под обгон на Василиево-Петровской
+function train574_vasp_arr(train_name, traj_name, is_busy)
+
+	-- Если поезд 574 на приближении к Батайску
+	if is_busy and train_name == "574" and traj_name == VSP_CHP2 then
+		-- Строим маршрут 574-му на пропуск
+		buildRoute(VSP_CHP2, "track_vasp_p3", train574.dir)
+		-- Просим удалить этот триггер
+		return TRIG_DELETE
+	end
+	
+	-- Сохраняем тригер, пока он не отработал
+	return TRIG_SAFE
+end
+
+setTrigger(train574_vasp_arr)
 
 --------------------------------------------------------------------------------
 -- Строим маневровый маршрут себе любимому
@@ -314,8 +331,7 @@ setTimeTrigger("+00:02", actionBuildRoute(train1.traj, "track_rg_p2d", train1.di
 
 -- Строим маршрут приема в Батайске
 function my_loco_shnt(train_name, traj_name, is_busy)
-
-	-- Если поезд 574 на приближении к Батайску
+	
 	if not is_busy and train_name == "574" and traj_name == Rg_Zar_Dep_POINT then
 		-- Ставим себе стрелки по маршруту до первого пути Ростова Главного
 		setSwitchsAlongRoute("track_rg_p2d", "track_rg_p1-93", train1.dir)
@@ -329,3 +345,23 @@ function my_loco_shnt(train_name, traj_name, is_busy)
 end
 
 setTrigger(my_loco_shnt)
+
+-- Маршрут отправления поезду 34 с 1 пути Ростов Главный
+setTimeTrigger("+00:20", actionBuildRoute(train1.traj, Zar_CHU2, train1.dir))
+
+-- Строим маршрут пропуска 34 в Батайске
+function train34_apr(train_name, traj_name, is_busy)
+
+	-- Если поезд 574 на приближении к Батайску
+	if is_busy and train_name == "34" and traj_name == BP2_CHU1 then
+		-- Строим маршрут 574-му на пропуск
+		buildRoute(BP2_CHU1, "track_bat-7km_nb-2", 1)
+		-- Просим удалить этот триггер
+		return TRIG_DELETE
+	end
+	
+	-- Сохраняем тригер, пока он не отработал
+	return TRIG_SAFE
+end
+
+setTrigger(train34_apr)
