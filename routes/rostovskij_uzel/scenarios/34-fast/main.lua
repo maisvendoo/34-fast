@@ -147,9 +147,9 @@ local VSP_NP2 = "track_vasp-orlk_2-4"
 local VSP_NU1 = "track_vis-vasp_12-nd"
 
 -- Пропуск четных
-setTrigger(autoApproach(VSP_CHP2, VSP_CHU1, 1))
+-- setTrigger(autoApproach(VSP_CHP2, VSP_CHU1, 1))
 -- Пропуск нечетных
-setTrigger(autoApproach(VSP_NP2, VSP_NU1, -1))
+-- setTrigger(autoApproach(VSP_NP2, VSP_NU1, -1))
 
 -- Орловка-Кубанская
 local ORL_CHP2 = "track_vasp-orlk_3-1"
@@ -339,6 +339,25 @@ function train574_vasp_dep(train_name, traj_name, is_busy)
 end
 
 setTrigger(train574_vasp_dep)
+
+-- Ставим Васильево-Петровскую на автопропуск, после ухода 574-го
+function vasp_apr(train_name, traj_name, is_busy)
+
+	-- Если поезд 574 покинул участок удаления
+	if not is_busy and train_name == "574" and traj_name == VSP_CHU1 then
+		
+		-- Включаем автоматику
+		setTrigger(autoApproach(VSP_CHP2, VSP_CHU1, 1))
+		setTrigger(autoApproach(VSP_NP2, VSP_NU1, -1))
+
+		return TRIG_DELETE
+	end
+	
+	-- Сохраняем тригер, пока он не отработал
+	return TRIG_SAFE
+end
+
+setTrigger(vasp_apr)
 
 --------------------------------------------------------------------------------
 -- Строим маневровый маршрут себе любимому
