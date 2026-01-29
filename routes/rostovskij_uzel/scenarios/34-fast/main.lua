@@ -105,7 +105,7 @@ setTrigger(autoApproach(Zar_NP2, Zar_NU1, -1))
 
 -- Блок-пост2
 local BP2_CHP2 = Zar_CHU2
-local BP2_CHU1 = "track_bat_608-52"
+local BP2_CHU1 = "track_bat_606-chrm"
 
 local BP2_NP1 = "track_1352km_n2r-chrd"
 local BP2_NU2 = "track_zar-1353km_1-chd"
@@ -243,7 +243,7 @@ local TIM_BRH_DEP_POINT = "track_brh-tim_16-nd"
 local TIM_NU2 = "track_brh-tim_14-16"
 
 -- Поезд 2005 отправляем в 12:05 в сторону Брюховецкой
-setTimeTrigger("12:05", actionBuildRoute(train2005.traj, TIM_BRH_DEP_POINT, train2005.dir))
+setTimeTrigger("+00:05", actionBuildRoute(train2005.traj, TIM_BRH_DEP_POINT, train2005.dir))
 
 -- Маршрут отправления грузового поезда 2003
 function train2003_dep(train_name, traj_name, is_busy)
@@ -287,15 +287,15 @@ local Near_HM2D = "track_rg_p2d"
 local Rg_Zar_Dep_POINT = "track_rg_7-ch_zar"
 
 -- Отправление поезда 574 в 12:13
-setTimeTrigger("12:01", actionBuildRoute(train574.traj, Rg_Zar_Dep_POINT, train574.dir))
+setTimeTrigger("+00:01", actionBuildRoute(train574.traj, Rg_Zar_Dep_POINT, train574.dir))
 
 -- Строим маршрут приема в Батайске
 function train574_arr(train_name, traj_name, is_busy)
 
 	-- Если поезд 574 на приближении к Батайску
-	if is_busy and train_name == "574" and traj_name == "track_bat_52-chpm" then
+	if is_busy and train_name == "574" and traj_name == BP2_CHU1 then
 		-- Строим маршрут 574-му на прием
-		buildRoute("track_bat_52-сhpm", "track_bat_p1", train574.dir)
+		buildRoute(BP2_CHU1, "track_bat_p1", train574.dir)
 		-- Просим удалить этот триггер
 		return TRIG_DELETE
 	end
@@ -310,7 +310,7 @@ setTrigger(train574_arr)
 -- Строим маневровый маршрут себе любимому
 --------------------------------------------------------------------------------
 
-setTimeTrigger("12:02", actionBuildRoute(train1.traj, "track_rg_p2d", train1.dir))
+setTimeTrigger("+00:02", actionBuildRoute(train1.traj, "track_rg_p2d", train1.dir))
 
 -- Строим маршрут приема в Батайске
 function my_loco_shnt(train_name, traj_name, is_busy)
