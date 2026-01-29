@@ -242,16 +242,16 @@ setTrigger(autoApproach(BRH_NP2, BRH_NU1, -1))
 local TIM_BRH_DEP_POINT = "track_brh-tim_16-nd"
 local TIM_NU2 = "track_brh-tim_14-16"
 
--- Поезд 2001 отправляем в 12:05 в сторону Брюховецкой
-setTimeTrigger("+00:05", actionBuildRoute(train2001.traj, TIM_BRH_DEP_POINT, train2001.dir))
+-- Поезд 2005 отправляем в 12:05 в сторону Брюховецкой
+setTimeTrigger("+00:05", actionBuildRoute(train2005.traj, TIM_BRH_DEP_POINT, train2005.dir))
 
--- Маршрут отправления грузового поезда 2005
-function train2005_dep(train_name, traj_name, is_busy)
+-- Маршрут отправления грузового поезда 2001
+function train2001_dep(train_name, traj_name, is_busy)
 
-	-- Если поезд 2001 освободил 2-й участок удаления
-	if not is_busy and train_name == "2001" and traj_name == TIM_NU2 then
+	-- Если поезд 2005 освободил 2-й участок удаления
+	if not is_busy and train_name == "2005" and traj_name == TIM_NU2 then
 		-- Строим маршрут 2003-му
-		buildRoute(train2005.traj, TIM_BRH_DEP_POINT, train2005.dir)
+		buildRoute(train2001.traj, TIM_BRH_DEP_POINT, train2001.dir)
 		-- Просим удалить этот триггер
 		return TRIG_DELETE
 	end
@@ -260,14 +260,14 @@ function train2005_dep(train_name, traj_name, is_busy)
 	return TRIG_SAFE
 end
 
-setTrigger(train2005_dep)
+setTrigger(train2001_dep)
 
 -- Маршрут отправления грузового поезда 2003
 function train2003_dep(train_name, traj_name, is_busy)
 
-	-- Если поезд 2005 освободил 2-й участок удаления + 1 блок-участок
-	if not is_busy and train_name == "2005" and traj_name == "track_brh-tim_12-14" then
-		-- Строим маршрут 2001-му
+	-- Если поезд 2001 освободил 2-й участок удаления + 1 блок-участок
+	if not is_busy and train_name == "2001" and traj_name == "track_brh-tim_12-14" then
+		-- Строим маршрут 2003-му
 		buildRoute(train2003.traj, TIM_BRH_DEP_POINT, train2003.dir)
 		-- Просим удалить этот триггер
 		return TRIG_DELETE
@@ -323,6 +323,23 @@ end
 
 setTrigger(train574_vasp_arr)
 
+-- Стром маршрут отправления после обгона 34-м на Василиево-Петровской
+function train574_vasp_dep(train_name, traj_name, is_busy)
+
+	-- Если поезд 34 покинул участок удаления
+	if not is_busy and train_name == "34" and traj_name == VSP_CHU1 then
+		-- Строим маршрут 574-му на отправление
+		buildRoute("track_vasp_p3", VSP_CHU1, train574.dir)
+		-- Просим удалить этот триггер
+		return TRIG_DELETE
+	end
+	
+	-- Сохраняем тригер, пока он не отработал
+	return TRIG_SAFE
+end
+
+setTrigger(train574_vasp_dep)
+
 --------------------------------------------------------------------------------
 -- Строим маневровый маршрут себе любимому
 --------------------------------------------------------------------------------
@@ -347,7 +364,7 @@ end
 setTrigger(my_loco_shnt)
 
 -- Маршрут отправления поезду 34 с 1 пути Ростов Главный
-setTimeTrigger("+00:20", actionBuildRoute(train1.traj, Zar_CHU2, train1.dir))
+setTimeTrigger("+00:20", actionBuildRoute(train2.traj, Zar_CHU2, train2.dir))
 
 -- Строим маршрут пропуска 34 в Батайске
 function train34_apr(train_name, traj_name, is_busy)
