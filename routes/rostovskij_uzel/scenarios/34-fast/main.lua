@@ -49,7 +49,7 @@ local BP7_NU1 = "track_bat-7kmx2_1-ns"
 -- Пропуск четных
 setTrigger(autoApproach(BP7_CHP2, BP7_CHU2, 1))
 -- Пропуск нечетных
-setTrigger(autoApproach(BP7_NP2, BP2_NU1, -1))
+setTrigger(autoApproach(BP7_NP2, BP7_NU1, -1))
 
 -- Высочино
 local Vis_CHP2 = "track_7km-vis_3-1"
@@ -133,7 +133,7 @@ setTrigger(autoApproach(KAN_NP2, KAN_NU1, -1))
 
 -- Придорожная
 local PRD_CHP2 = "track_kan-prd_3-1"
-local PRD_CHU1 = "track_kan-brh_chd-21"
+local PRD_CHU1 = "track_prd-brh_chd-21"
 
 local PRD_NP2 = "track_prd-brh_2-4"
 local PRD_NU1 = "track_kan-prd_8-nd"
@@ -304,7 +304,7 @@ end
 setTrigger(my_loco_shnt)
 
 -- Маршрут отправления поезду 34 с 1 пути Ростов Главный
-setTimeTrigger("+00:20", actionBuildRoute(train2.traj, Zar_CHU2, train2.dir))
+setTimeTrigger("+00:20", actionBuildRoute(train2.traj, "track_rg_7-ch_zar", train2.dir))
 
 -- Строим маршрут пропуска 34 по Батайску
 function train34_bat_apr(train_name, traj_name, is_busy)
@@ -339,3 +339,98 @@ function train34_vasp_apr(train_name, traj_name, is_busy)
 end
 
 setTrigger(train34_vasp_apr)
+
+-- Маршрут приема 34 по Тимашевской-1
+function train34_tim_arr(train_name, traj_name, is_busy)
+
+	-- Если поезд 34 на приближении
+	if is_busy and train_name == "34" and traj_name == "track_brh-tim_3-1" then
+
+		-- принимаемся на 9 путь
+		buildRoute("track_brh-tim_1-n", "track_tim_p9n", 1)
+
+		return TRIG_DELETE
+
+	end	
+
+	return TRIG_SAFE
+
+end
+
+setTrigger(train34_tim_arr)
+
+-- Маршрут приема 574 по Тимашевской-1
+function train574_tim_arr(train_name, traj_name, is_busy)
+
+	-- Если поезд 34 на приближении
+	if not is_busy and train_name == "34" and traj_name == "track_tim_33x2-37" then
+
+		-- принимаемся на 6 путь
+		buildRoute("track_brh-tim_1-n", "track_tim_p6n", 1)
+
+		return TRIG_DELETE
+
+	end	
+
+	return TRIG_SAFE
+
+end
+
+setTrigger(train574_tim_arr)
+
+-- Маршрут приема 2005 на путь 1Т по Батайску
+function train2005_bat_arr(train_name, traj_name, is_busy)
+
+	-- Если поезд 2005 на приближении
+	if is_busy and train_name == "2005" and traj_name == "track_bat-7kmx2_2-1" then
+
+		-- принимаемся на 4 путь
+		buildRoute("track_bat-7kmx2_2-1", "track_bat_p1t", -1)
+
+		return TRIG_DELETE
+
+	end	
+
+	return TRIG_SAFE
+
+end
+
+setTrigger(train2005_bat_arr)
+
+-- Маршрут приема 2001 на путь 2Т по Батайску
+function train2001_bat_arr(train_name, traj_name, is_busy)
+
+	
+	if not is_busy and train_name == "2005" and traj_name == "track_bat_p1t-382" then
+
+		-- принимаемся на 4 путь
+		buildRoute("track_bat-7kmx2_2-1", "track_bat_p2t", -1)
+
+		return TRIG_DELETE
+
+	end	
+
+	return TRIG_SAFE
+
+end
+
+setTrigger(train2001_bat_arr)
+
+-- Маршрут приема 2003 на путь 3Т по Батайску
+function train2003_bat_arr(train_name, traj_name, is_busy)
+
+	
+	if not is_busy and train_name == "2001" and traj_name == "track_bat_p2t-384" then
+
+		-- принимаемся на 4 путь
+		buildRoute("track_bat-7kmx2_2-1", "track_bat_p3t", -1)
+
+		return TRIG_DELETE
+
+	end	
+
+	return TRIG_SAFE
+
+end
+
+setTrigger(train2003_bat_arr)
