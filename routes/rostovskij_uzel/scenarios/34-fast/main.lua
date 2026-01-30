@@ -16,19 +16,19 @@ require('spawn_trains')
 --------------------------------------------------------------------------------
 
 -- Заречная
-local Zar_CHP1 = "track_rg_7-ch_zar"
-local Zar_CHU2 = "track_zar-1352km_nd-2"
+local Zar_CHP2 = "track_rg_9-7"
+local Zar_CHU1 = "track_zar-1352km_nd-2"
 
 local Zar_NP2 = "track_zar-1352km_1-chd"
 local Zar_NU1 = "track_zar_chd-2"
 
 -- Пропуск четных
-setTrigger(autoApproach(Zar_CHP1, Zar_CHU2, 1))
+setTrigger(autoApproach(Zar_CHP2, Zar_CHU1, 1))
 -- Пропуск нечетных
 setTrigger(autoApproach(Zar_NP2, Zar_NU1, -1))
 
 -- Блок-пост2
-local BP2_CHP2 = Zar_CHU2
+local BP2_CHP2 = "track_zar-1352km_nd-2"
 local BP2_CHU1 = "track_bat_606-chrm"
 
 local BP2_NP1 = "track_1352km_n2r-chrd"
