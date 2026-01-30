@@ -9,83 +9,7 @@ setTime("12:00")
 --------------------------------------------------------------------------------
 -- Расставляем поезда
 --------------------------------------------------------------------------------
-
--- Электровоз ЭП1м-735 на 9 пути станции Ростов Берег
-train1 = TrainData.new()
---train1.name = "EP1m-735"
---train1.config = "ep1m-735"
-train1.name = "ВЛ60пк-1543"
-train1.config = "vl60pk-1543"
-train1.traj = "track_rg_p9e"
-train1.coord = 30.0
-train1.dir = -1
-
-setTrain(train1)
-
--- Состав пассажирского поезда 34 (переименовать после сцепки!!!)
-train2 = TrainData.new()
-train2.name = "0000"
-train2.config = "train-T65_17"
-train2.traj = "track_rg_p1"
-train2.coord = 580.0
-train2.dir = 1
-
-setTrain(train2)
-
--- Пассажирский поезд 574 на 2 пути станции Ростов Главный
-train574 = TrainData.new()
-train574.name = "574"
-train574.config = "vl60pk-1543-T65_17"
-train574.traj = "track_rg_p2"
-train574.coord = 550.0
-train574.dir = 1
-train574.auto = true
-
-setTrain(train574)
-
--- Грузовой поезд 2001 с порожними хопперами на 4 пути станции Тимашевский обход
-train2001 = TrainData.new()
-train2001.name = "2001"
-train2001.config = "vl60k-1737-frEmpties"
-train2001.traj = "track_tim_p4"
-train2001.coord = 20.0
-train2001.dir = -1
-train2001.auto = true
-
-setTrain(train2001)
-
--- Грузовой наливной поезд 2003 на 6 пути станции Тимашевский обход
-train2003 = TrainData.new()
-train2003.name = "2003"
-train2003.config = "vl60k-2003"
-train2003.traj = "track_tim_p6"
-train2003.coord = 20.0
-train2003.dir = -1
-train2003.auto = true
-
-setTrain(train2003)
-
--- Грузовой поезд 2005 на 2 пути станции Тимашевский обход
-train2005 = TrainData.new()
-train2005.name = "2005"
-train2005.config = "vl60k-2005"
-train2005.traj = "track_tim_p2"
-train2005.coord = 20.0
-train2005.dir = -1
-train2005.auto = true
-
-setTrain(train2005)
-
--- Пассажирский поезд 501 на станции Староминская-Тимашевская
-train501 = TrainData.new()
-train501.name = "501"
-train501.config = "vl60pk-1543-Dvuxetagki_rzd"
-train501.traj = "track_strm_p1"
-train501.coord = 20.0
-train501.dir = -1
-train501.auto = true
-
-setTrain(train501)
+require('spawn_trains')
 
 --------------------------------------------------------------------------------
 --	Автоматическое управление ДЦ на промежуточных станциях - свозной пропуск
@@ -146,10 +70,6 @@ local VSP_CHU1 = "track_vasp-orlk_chd-27"
 local VSP_NP2 = "track_vasp-orlk_2-4"
 local VSP_NU1 = "track_vis-vasp_12-nd"
 
--- Пропуск четных
--- setTrigger(autoApproach(VSP_CHP2, VSP_CHU1, 1))
--- Пропуск нечетных
--- setTrigger(autoApproach(VSP_NP2, VSP_NU1, -1))
 
 -- Орловка-Кубанская
 local ORL_CHP2 = "track_vasp-orlk_3-1"
@@ -363,9 +283,10 @@ setTrigger(vasp_apr)
 -- Строим маневровый маршрут себе любимому
 --------------------------------------------------------------------------------
 
+-- Строим поездной маршрут с 9 пути Ростов Берег до сигнала НМ2Д
 setTimeTrigger("+00:02", actionBuildRoute(train1.traj, "track_rg_p2d", train1.dir))
 
--- Строим маршрут приема в Батайске
+-- Строим маневровый маршрут от НМ2Д до 1 пути Ростов Главный
 function my_loco_shnt(train_name, traj_name, is_busy)
 	
 	if not is_busy and train_name == "574" and traj_name == Rg_Zar_Dep_POINT then
@@ -385,10 +306,10 @@ setTrigger(my_loco_shnt)
 -- Маршрут отправления поезду 34 с 1 пути Ростов Главный
 setTimeTrigger("+00:20", actionBuildRoute(train2.traj, Zar_CHU2, train2.dir))
 
--- Строим маршрут пропуска 34 в Батайске
-function train34_apr(train_name, traj_name, is_busy)
+-- Строим маршрут пропуска 34 по Батайску
+function train34_bat_apr(train_name, traj_name, is_busy)
 
-	-- Если поезд 574 на приближении к Батайску
+	-- Если поезд 34 на приближении к Батайску
 	if is_busy and train_name == "34" and traj_name == BP2_CHU1 then
 		-- Строим маршрут 574-му на пропуск
 		buildRoute(BP2_CHU1, "track_bat-7km_nb-2", 1)
@@ -400,4 +321,21 @@ function train34_apr(train_name, traj_name, is_busy)
 	return TRIG_SAFE
 end
 
-setTrigger(train34_apr)
+setTrigger(train34_bat_apr)
+
+-- Строим маршрут пропуска 34 по Васильево-Петровской
+function train34_vasp_apr(train_name, traj_name, is_busy)
+
+	-- Если поезд 34 на приближении к Васильево-Петровской
+	if is_busy and train_name == "34" and traj_name == VSP_CHP2 then
+		-- Строим маршрут 574-му на пропуск
+		buildRoute(VSP_CHP2, VSP_CHU1, 1)
+		-- Просим удалить этот триггер
+		return TRIG_DELETE
+	end
+	
+	-- Сохраняем тригер, пока он не отработал
+	return TRIG_SAFE
+end
+
+setTrigger(train34_vasp_apr)
