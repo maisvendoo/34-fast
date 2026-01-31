@@ -28,7 +28,7 @@
 		<ModuleConfigDir>cisterns</ModuleConfigDir>
 		<ModuleConfig>cistern_15-150_1</ModuleConfig>
 		<IsOrientationForward>1</IsOrientationForward>
-		<Count>3</Count>
+		<Count>2</Count>
 		<PayloadCoeff>0.5</PayloadCoeff>
 		<IsBrakeShoes>0</IsBrakeShoes>
 	</Vehicle>
@@ -39,7 +39,7 @@
 		<ModuleConfigDir>cisterns</ModuleConfigDir>
 		<ModuleConfig>cistern_15-150_2</ModuleConfig>
 		<IsOrientationForward>1</IsOrientationForward>
-		<Count>3</Count>
+		<Count>2</Count>
 		<PayloadCoeff>0.5</PayloadCoeff>
 		<IsBrakeShoes>0</IsBrakeShoes>
 	</Vehicle>
@@ -50,7 +50,7 @@
 		<ModuleConfigDir>cisterns</ModuleConfigDir>
 		<ModuleConfig>cistern_15-871</ModuleConfig>
 		<IsOrientationForward>1</IsOrientationForward>
-		<Count>3</Count>
+		<Count>2</Count>
 		<PayloadCoeff>0.5</PayloadCoeff>
 		<IsBrakeShoes>0</IsBrakeShoes>
 	</Vehicle>
@@ -61,7 +61,7 @@
 		<ModuleConfigDir>cisterns</ModuleConfigDir>
 		<ModuleConfig>cistern_15-897</ModuleConfig>
 		<IsOrientationForward>1</IsOrientationForward>
-		<Count>3</Count>
+		<Count>2</Count>
 		<PayloadCoeff>0.5</PayloadCoeff>
 		<IsBrakeShoes>0</IsBrakeShoes>
 	</Vehicle>
@@ -72,7 +72,7 @@
 		<ModuleConfigDir>cisterns</ModuleConfigDir>
 		<ModuleConfig>cistern_15-1443_1</ModuleConfig>
 		<IsOrientationForward>1</IsOrientationForward>
-		<Count>3</Count>
+		<Count>2</Count>
 		<PayloadCoeff>0.5</PayloadCoeff>
 		<IsBrakeShoes>0</IsBrakeShoes>
 	</Vehicle>
@@ -83,7 +83,7 @@
 		<ModuleConfigDir>cisterns</ModuleConfigDir>
 		<ModuleConfig>cistern_15-1443_2</ModuleConfig>
 		<IsOrientationForward>1</IsOrientationForward>
-		<Count>3</Count>
+		<Count>2</Count>
 		<PayloadCoeff>0.5</PayloadCoeff>
 		<IsBrakeShoes>0</IsBrakeShoes>
 	</Vehicle>
@@ -94,7 +94,7 @@
 		<ModuleConfigDir>cisterns</ModuleConfigDir>
 		<ModuleConfig>cistern_15-1500_1</ModuleConfig>
 		<IsOrientationForward>1</IsOrientationForward>
-		<Count>3</Count>
+		<Count>2</Count>
 		<PayloadCoeff>0.5</PayloadCoeff>
 		<IsBrakeShoes>0</IsBrakeShoes>
 	</Vehicle>
@@ -105,7 +105,7 @@
 		<ModuleConfigDir>cisterns</ModuleConfigDir>
 		<ModuleConfig>cistern_15-1500_2</ModuleConfig>
 		<IsOrientationForward>1</IsOrientationForward>
-		<Count>3</Count>
+		<Count>2</Count>
 		<PayloadCoeff>0.5</PayloadCoeff>
 		<IsBrakeShoes>0</IsBrakeShoes>
 	</Vehicle>
@@ -116,7 +116,7 @@
 		<ModuleConfigDir>cisterns</ModuleConfigDir>
 		<ModuleConfig>cistern_15-1547_1</ModuleConfig>
 		<IsOrientationForward>1</IsOrientationForward>
-		<Count>3</Count>
+		<Count>2</Count>
 		<PayloadCoeff>0.5</PayloadCoeff>
 		<IsBrakeShoes>0</IsBrakeShoes>
 	</Vehicle>
@@ -127,7 +127,7 @@
 		<ModuleConfigDir>cisterns</ModuleConfigDir>
 		<ModuleConfig>cistern_15-1547_2</ModuleConfig>
 		<IsOrientationForward>1</IsOrientationForward>
-		<Count>3</Count>
+		<Count>2</Count>
 		<PayloadCoeff>0.5</PayloadCoeff>
 		<IsBrakeShoes>0</IsBrakeShoes>
 	</Vehicle>
@@ -138,7 +138,7 @@
 		<ModuleConfigDir>cisterns</ModuleConfigDir>
 		<ModuleConfig>cistern_15-1547_3</ModuleConfig>
 		<IsOrientationForward>1</IsOrientationForward>
-		<Count>3</Count>
+		<Count>2</Count>
 		<PayloadCoeff>0.5</PayloadCoeff>
 		<IsBrakeShoes>0</IsBrakeShoes>
 	</Vehicle>
@@ -149,7 +149,7 @@
 		<ModuleConfigDir>cisterns</ModuleConfigDir>
 		<ModuleConfig>cistern_15-1547_4</ModuleConfig>
 		<IsOrientationForward>1</IsOrientationForward>
-		<Count>3</Count>
+		<Count>2</Count>
 		<PayloadCoeff>0.5</PayloadCoeff>
 		<IsBrakeShoes>0</IsBrakeShoes>
 	</Vehicle>
@@ -160,7 +160,7 @@
 		<ModuleConfigDir>cisterns</ModuleConfigDir>
 		<ModuleConfig>cistern_15-c863_1</ModuleConfig>
 		<IsOrientationForward>1</IsOrientationForward>
-		<Count>3</Count>
+		<Count>2</Count>
 		<PayloadCoeff>0.5</PayloadCoeff>
 		<IsBrakeShoes>0</IsBrakeShoes>
 	</Vehicle>
@@ -171,7 +171,7 @@
 		<ModuleConfigDir>cisterns</ModuleConfigDir>
 		<ModuleConfig>cistern_15-c863_2</ModuleConfig>
 		<IsOrientationForward>1</IsOrientationForward>
-		<Count>3</Count>
+		<Count>2</Count>
 		<PayloadCoeff>0.5</PayloadCoeff>
 		<IsBrakeShoes>0</IsBrakeShoes>
 	</Vehicle>
