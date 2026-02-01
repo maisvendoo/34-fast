@@ -434,3 +434,65 @@ function train2003_bat_arr(train_name, traj_name, is_busy)
 end
 
 setTrigger(train2003_bat_arr)
+
+--------------------------------------------------------------------------------
+-- Занимаемся поездом 501
+--------------------------------------------------------------------------------
+
+-- Маршрут отправления со станции Староминская-Тимашевская
+setTimeTrigger("+00:10", actionBuildRoute(train501.traj, "track_orlk-strm_22-nd", train501.dir))
+
+-- Маршрут пропуска по Батайску
+function train501_bat_apr(train_name, traj_name, is_busy)
+
+	-- Если поезд 501 на приближении
+	if is_busy and train_name == "501" and traj_name == "track_bat-7kmx2_2-1" then
+
+		buildRoute("track_bat-7kmx2_2-1", "track_zar-1352km_1-chd", train501.dir)
+
+		return TRIG_DELETE
+
+	end	
+
+	return TRIG_SAFE
+
+end
+
+setTrigger(train501_bat_apr)
+
+-- Маршрут пропуска по 2 пути станции Васильево-Петровская (которая пока не на автоматике!!!)
+function train501_vasp_apr(train_name, traj_name, is_busy)
+
+	-- Если поезд 501 на приближении
+	if is_busy and train_name == "501" and traj_name == VSP_NP2 then
+
+		buildRoute(getNextTraj(VSP_NP2, train501.dir), "track_vasp_p2", train501.dir)
+		buildRoute("track_vasp_p2", VSP_NU1, train501.dir)
+
+		return TRIG_DELETE
+
+	end	
+
+	return TRIG_SAFE
+
+end
+
+setTrigger(train501_vasp_apr)
+
+-- Маршрут приема по Ростов Главный
+function train501_rg_arr(train_name, traj_name, is_busy)
+
+	-- Если поезд 2005 на приближении
+	if is_busy and train_name == "501" and traj_name == Zar_NU1 then
+
+		buildRoute(Zar_NU1, "track_rg_p1", train501.dir)
+
+		return TRIG_DELETE
+
+	end	
+
+	return TRIG_SAFE
+
+end
+
+setTrigger(train501_rg_arr)
